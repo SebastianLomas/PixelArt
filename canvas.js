@@ -1,5 +1,5 @@
 let container = document.getElementById("container")
-let colorSelection = document.getElementById("color")
+let colorSelector = document.getElementById("color")
 
 const createGrid = (function() {
     for(let y = 0;y < 16;y++) {
@@ -11,3 +11,12 @@ const createGrid = (function() {
         }
     }
 })()
+
+container.addEventListener("click", function(e) {
+    let element = e.target
+    let color = colorSelector.value
+
+    if(element.className === "grid") {
+        element.style.backgroundColor = color
+    }
+})
