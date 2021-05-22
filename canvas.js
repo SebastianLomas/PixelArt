@@ -1,4 +1,6 @@
 let container = document.getElementById("container")
+let colorSelection = document.getElementById("color")
+
 const createGrid = (function() {
     for(let y = 0;y < 16;y++) {
         for(let x = 0;x < 16;x++) {
