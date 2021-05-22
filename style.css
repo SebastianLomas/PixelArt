@@ -1,5 +1,14 @@
 .grid-container {
-    width: 500px;
-    height: 500px;
+    display: flex;
+    width: 576px;
+    height: 576px;
+    flex-flow: wrap;
     border: 1px solid #4b4b4b;
+}
+
+.grid {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #4b4b4b;
+    box-sizing: border-box;
 }
