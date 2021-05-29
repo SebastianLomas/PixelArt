@@ -12,6 +12,9 @@ let windowMaxWidth = window.matchMedia("(min-width: 800px)")
 let windowMinWidth = window.matchMedia("(min-width: 600px)")
 let canvasEnable = true
 let pixelSize = 20
+let $color = document.getElementById('color')
+let $colorSample = document.getElementById('color-sample')
+let $colorHexaText = document.getElementById('color-hexa-text')
 
 const draw = function(originX,originY,finalX,finalY,color = "black", lineSize = 1) {
     ctx.strokeStyle = color
@@ -82,8 +85,30 @@ const resizeCanvas = function() {
     }
 }
 
+const showColor = function(fromColorInput = false, fromText = false) {
+    if(fromColorInput) {
+        $colorSample.style.backgroundColor = $color.value
+        $colorSample.style.borderColor = $color.value
+        $colorHexaText.value = $color.value
+    } else if(fromText) {
+        $colorSample.style.backgroundColor = $colorHexaText.value
+        $colorSample.style.borderColor = $colorHexaText.value
+        $color.value = $colorHexaText.value
+    }
+}
+
 resizeCanvas()
+showColor(fromColorInput = true)
 
 windowMaxWidth.addEventListener("change", resizeCanvas)
 windowMinWidth.addEventListener("change", resizeCanvas)
+
+$color.addEventListener('input', function() {
+    showColor(true,false)
+})
+$colorHexaText.addEventListener('input',function() {
+    showColor(false,true)
+})
+
+
 
