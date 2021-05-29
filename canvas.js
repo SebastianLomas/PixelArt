@@ -17,6 +17,10 @@ let $colorSample = document.getElementById('color-sample')
 let $colorHexaText = document.getElementById('color-hexa-text')
 
 const getOrigins = function(x,y) {
+    /* This function gets the current position of x and y.
+    Subtracts the space between position of X and the left border of the page, and
+    the space between position y and the top border of left.
+    Then, it subtracts 1 to X and Y until they both are multiple of pixelSize(20 by default)*/
     let currentX = x-canvas.offsetLeft
     let currentY = y-canvas.offsetTop
     let initialX = currentX
@@ -60,9 +64,10 @@ const drawRect = function(originX,originY,finalX,finalY,color = "black") {
 const drawGrid = function(squareSize) {
     let currentLine = squareSize
     let canvasSize = canvas.width
-    let numberOfLines = (canvasSize/squareSize) - 1
+    let numberOfLines = (canvasSize/squareSize) - 1//-1 avoids canvas to draw a line on the border.
     
     for(let i = 0;i < numberOfLines;i++) {
+        /* Every iteration draws a line then, then add squareSize value to currentLine, and repeat */
         draw(0,currentLine,canvasSize,currentLine,"#4b4b4b")
         draw(currentLine,0,currentLine,canvasSize,"#4b4b4b")
         currentLine += squareSize
@@ -117,6 +122,8 @@ const resizeCanvas = function() {
 }
 
 const showColor = function(fromColorInput = false, fromText = false) {
+    /* if fromColor is true, it takes the value from the input color. Else it will take the value
+    from the text input */
     if(fromColorInput) {
         $colorSample.style.backgroundColor = $color.value
         $colorSample.style.borderColor = $color.value
