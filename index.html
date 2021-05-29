@@ -9,8 +9,18 @@
 </head>
 <body>
     <div class="app">
-        <div class="grid-container" id="container">
-            <canvas id="canvas"></canvas>
+        <div class="color-text__container">
+            <input type="text" name="color-hexa-text" class="color-hexa-text" id="color-hexa-text">
+        </div>
+        <div class="color-picker__container">
+            <label for="color" class="color-sample" id="color-sample"></label>
+            <input type="color" name="color" class="color" id="color">
+        </div>
+        <div class="grid__container" id="container">
+            <canvas class="canvas" id="canvas"></canvas>
+        </div>
+        <div class="recent-color__container">
+            
         </div>
     </div>
     <script src="canvas.js"></script>
