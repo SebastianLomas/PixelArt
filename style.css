@@ -1,3 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: serif;
+}
+
+.app {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 600px 1fr;
+    grid-template-rows: 3rem 600px;
+    grid-template-areas: 'colorPicker colorText .'
+                         'colorInputContainer gridContainer .';
+}
+
+.color-text__container {
+    grid-area: colorText;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+
+.color-hexa-text {
+    display: block;
+    width: 50%;
+    height: 1.5rem;
+    font-family: arial;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    border: 0;
+    border-bottom: 1px solid black;
+    padding: 0 0.5rem;
+}
+
+.color-picker__container {
+    grid-area: colorPicker;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.color-picker__container .color-sample {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 100%;
+}
+
+.color-input__container {
+    grid-area: colorInputContainer;
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: flex-end;
+}
+
+.color-input__container .color {
+    visibility: hidden;
+}
+
+.grid__container {
+    grid-area: gridContainer;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .canvas {
+    grid-area: canvas;
     border: 1px solid #4b4b4b;
 }
