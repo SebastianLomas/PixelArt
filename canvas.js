@@ -16,6 +16,32 @@ let $color = document.getElementById('color')
 let $colorSample = document.getElementById('color-sample')
 let $colorHexaText = document.getElementById('color-hexa-text')
 
+const getOrigins = function(x,y) {
+    let currentX = x-canvas.offsetLeft
+    let currentY = y-canvas.offsetTop
+    let initialX = currentX
+    let initialY = currentY
+    let initialCoordinates = []
+
+    for(let i = 0;i < pixelSize;i++) {
+        if((initialX%pixelSize)!== 0) {
+            initialX--
+        }
+        if((initialY%pixelSize)!== 0) {
+            initialY--
+        }
+
+        if((initialX%pixelSize) === 0) {
+            if((initialY%pixelSize) === 0) {
+                break
+            }
+        }
+    }
+
+    initialCoordinates = [initialX,initialY]
+    return initialCoordinates
+}
+
 const draw = function(originX,originY,finalX,finalY,color = "black", lineSize = 1) {
     ctx.strokeStyle = color
     ctx.lineWidth = lineSize
@@ -24,6 +50,11 @@ const draw = function(originX,originY,finalX,finalY,color = "black", lineSize = 
     ctx.lineTo(finalX,finalY)
     ctx.stroke()
     ctx.closePath()
+}
+
+const drawRect = function(originX,originY,finalX,finalY,color = "black") {
+    ctx.fillStyle = color
+    ctx.fillRect(originX,originY,finalX,finalY)
 }
 
 const drawGrid = function(squareSize) {
@@ -108,6 +139,12 @@ $color.addEventListener('input', function() {
 })
 $colorHexaText.addEventListener('input',function() {
     showColor(false,true)
+})
+
+canvas.addEventListener('click', function(e) {
+    let coordinate = getOrigins(e.x,e.y)
+    drawRect(coordinate[0],coordinate[1],pixelSize,pixelSize,$color.value)
+    console.log(coordinate)
 })
 
 
